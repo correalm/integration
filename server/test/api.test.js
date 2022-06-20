@@ -1,6 +1,5 @@
 import supertest from "supertest";
 import setupApp from "../src/app.js";
-import Marker from "../src/models/marker.js";
 
 const app = setupApp(0);
 
@@ -23,15 +22,14 @@ describe("insert", () => {
 
   const mockMarker = {
     _id: "some-user-is",
-    position: { lat: "-53,333", lng: "-09,78" },
+    position: { lat: 55, lng: 56 },
   };
   const wrongMockMarker = {
     _id: "some-user-is",
-    position: { lng: "-09,78" },
+    position: { lng: 9 },
   };
 
   it("/GET should return a array and statusCode 200", async () => {
-    jest.setTimeout(10000);
     const res = await supertest(app).get("/markers");
     const array = [];
     expect(res._body).toEqual(array);
@@ -83,10 +81,10 @@ describe("insert", () => {
 
     const res = await supertest(app)
       .put(`/markers/${id}`)
-      .send({ position: { lat: "1234", lng: "5678" } });
+      .send({ position: { lat: 1234, lng: 5678 } });
 
     expect(res.statusCode).toEqual(201);
-    expect(res._body.position).toEqual({ lat: "1234", lng: "5678" });
+    expect(res._body.position).toEqual({ lat: 1234, lng: 5678 });
   });
 
   it("/PUT wrong obj pass - should return a statusCode 400 and a error message", async () => {
@@ -111,7 +109,7 @@ describe("insert", () => {
   });
 
   it("/DELETE wrong - should return a status code 400 and error message", async () => {
-    const id = "62ad1238684a5401cb0181f5";
+    const id = "62ad1238684a5401cb0181f6";
     const res = await supertest(app).delete(`/markers/${id}`);
     expect(res.statusCode).toEqual(400);
     expect(res._body).toEqual({ message: "id not founded" });

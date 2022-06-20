@@ -61,6 +61,9 @@ class MarkersController {
     const { id } = req.params;
 
     this.marker.deleteOne({ _id: id }, (err, marker) => {
+      if (marker.deletedCount === 0) {
+        res.status(400).send({ message: "id not founded" })
+      }
       if (!err) {
         res.status(200).send();
       } else {
