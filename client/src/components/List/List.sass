@@ -1,0 +1,51 @@
+.container
+  position: absolute
+  z-index: 1
+  margin-top: 100px
+  margin-left: 20px
+  border-radius: 8px
+  background-color: #fff
+  background-color: #fff
+  .empty
+      text-align: center
+      height: 100%
+      p
+        font-size: 15px
+        font-weight: bold
+        color: #808b98
+
+  width: 345px
+  .title
+    border-top-left-radius: 8px
+    border-top-right-radius: 8px
+    background-color: #20252b
+    padding: 5px
+    text-align: left
+    h3
+      padding: 3px
+      margin-block-start: 0
+      margin-block-end: 0
+      margin-left: 10px
+      color: #fff
+      font-size: 14px
+  .content
+    max-height: 40vh
+    @media screen and (max-width: 450px) 
+      max-height: 20vh
+    overflow: auto
+    border-bottom-left-radius: 8px
+    border-bottom-right-radius: 8px
+    animation: opacityOn .5s
+
+@keyframes opacityOn 
+  100% 
+    opacity: 1
+  0% 
+    opacity: 0
+
+
+
+
+
+    
+

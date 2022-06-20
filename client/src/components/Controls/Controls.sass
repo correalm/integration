@@ -1,0 +1,25 @@
+.controls
+  transition: .5s
+  height: 30px
+  position: absolute
+  bottom: 20px
+  right: 20px
+  @media screen and (max-width: 450px)
+    width: 100%
+    right: 0
+    display: flex
+    flex-direction: column
+    align-items: center
+    transition: .5s
+  &-deleteAll
+    bottom: 54px
+  &-selected
+    bottom: 105px
+    animation: opacityOn .8s
+
+
+@keyframes opacityOn 
+  100% 
+    opacity: 1
+  0% 
+    opacity: 0
